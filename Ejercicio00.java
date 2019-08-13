@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Ejercicio00--
+ * Ejercicio00---
  */
 public class Ejercicio00 {
 
