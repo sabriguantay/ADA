@@ -2,13 +2,12 @@ package ar.com.ada.billeteravirtual;
 
 import java.util.*;
 
+
 public class App {
-
+ 
     public static Scanner Teclado = new Scanner(System.in);
-
     public static PersonaManager ABMPersona = new PersonaManager();
     public static UsuarioManager ABMUsuario = new UsuarioManager();
-
 
     public static void main(String[] args) throws Exception {
         ABMPersona.setup();
@@ -23,7 +22,7 @@ public class App {
 
             switch (opcion) {
             case 1:
-                alta();
+                altaPersona();
                 break;
 
             case 2:
@@ -59,7 +58,7 @@ public class App {
 
     }
 
-    public static void alta() {
+    public static void altaPersona() {
         Persona p = new Persona();
         System.out.println("Ingrese el nombre:");
         p.setNombre(Teclado.nextLine());
@@ -72,32 +71,68 @@ public class App {
         p.setEmail(Teclado.nextLine());
 
         ABMPersona.create(p);
-
+         
         System.out.println("Persona generada con exito.  " + p);
+        System.out.println("Desea crear un usuario para esa persona?");
 
-        System.out.println("Si desea crear un usuario seleccione 1:"); 
-        int opcion = Teclado.nextInt();
-        Teclado.nextLine();
-        if(opcion == 1){
-             agregarUsuario(p);
-        }else{
-          System.out.println("La opcion no es correcta.");   
-            }
+        String rta;
+        rta = Teclado.nextLine();
+        if (rta.equals("si")) {
+
+            Usuario u = new Usuario();
+            u.setUsername(p.getEmail());
+            System.out.println("Su nombre de usuario es " + u.getUsername());
+            System.out.println("Ingrese su password:");
+            u.setPassword(Teclado.nextLine());
+
+            /*
+             * System.out.println("Su mail es:"); u.setUserEmail(p.getEmail());
+             */
+            System.out.println("Ingrese su email de usuario:");
+            u.setEmail(Teclado.nextLine());
+
+            u.setPersonaID(p.getPersonaId());
+            ABMUsuario.create(u);
+
+            System.out.println("Usuario generado con exito.  " + u);
+        }
     }
 
-    private static void agregarUsuario(Persona p) {
+    public static void altaUsuario() {
         Usuario u = new Usuario();
-        System.out.println("Ingrese nombre de usuario:");
+        System.out.println("Ingrese el username:");
         u.setUsername(Teclado.nextLine());
-        System.out.println("Ingrese su contrasenia:");
-        u.setContrasenia(Teclado.nextLine());
-        System.out.println("Ingrese su email:");
+        System.out.println("Ingrese el Email:");
         u.setEmail(Teclado.nextLine());
-        u.setPersonaID(p.getPersonaId());
-        ABMUsuario.create(u);
+        System.out.println("Ingrese la password:");
+        u.setPassword(Teclado.nextLine());
+      
 
-        System.out.println("Usuario generado con exito.  " + u );
+        ABMUsuario.create(u);
+         
+        System.out.println("Usuario generado con exito.  " + u);
+        System.out.println("Desea crear una persona para ese usuario?");
+
+        String rta;
+        rta = Teclado.nextLine();
+        if (rta.equals("si")) {
+
+            Persona p = new Persona();
+            p.setNombre(u.getEmail());
+            System.out.println("El ID de la persona  es " + u.getPersonaID());
+            
+             System.out.println("Su mail es:"); u.setEmail(p.getEmail());
+            
+            System.out.println("Ingrese su email de usuario:");
+            u.setEmail(Teclado.nextLine());
+
+            u.setPersonaID(p.getPersonaId());
+            ABMUsuario.create(u);
+
+            System.out.println("Usuario generado con exito.  " + u);
+        }
     }
+    
 
     public static void baja() {
         System.out.println("Ingrese el nombre:");

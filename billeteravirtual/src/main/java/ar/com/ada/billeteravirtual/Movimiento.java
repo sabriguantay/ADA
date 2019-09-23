@@ -2,30 +2,27 @@ package ar.com.ada.billeteravirtual;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
- * Movimientos
+ * Movimiento
  */
+
+@Entity
+@Table(name = "movimiento")
 public class Movimiento {
 
-id;
-private Date fechaMovimiento;
-private String ubicacion;
-private float importe;
-private String tipoOperacion;
-private String conceptoOperacion;
-private String detalle;
-private int estado;
-private String deUsuario;
-private String aUsuario;
-private int cuentaDestino;
-private int cuentaOrigen;
-
-
-
-
-
-
-
-
+  public Date fechaMovimiento;
+  public String ubicacion;
+  public float importe;
+  public String tipoOperacion;
+  public String conceptoOperacion;
+  public String detalle;
+  public int estado;
+  public String deUsuario;
+  public String aUsuario;
+  public int cuentaDestino;
+  public int cuentaOrigen;
 
 }

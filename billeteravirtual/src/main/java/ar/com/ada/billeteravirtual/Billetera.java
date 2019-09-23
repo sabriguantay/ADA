@@ -1,5 +1,8 @@
 package ar.com.ada.billeteravirtual;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Billetera
  */
@@ -8,10 +11,8 @@ package ar.com.ada.billeteravirtual;
 @Table(name = "billetera")
 public class Billetera {
 
-@Id
-@Column(name = "billetera_id")
 
-List <Cuenta> 
+//List <Cuenta> 
 
 
 
