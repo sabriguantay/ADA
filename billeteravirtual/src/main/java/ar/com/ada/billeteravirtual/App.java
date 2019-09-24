@@ -2,6 +2,9 @@ package ar.com.ada.billeteravirtual;
 
 import java.util.*;
 
+import ar.com.ada.billeteravirtual.excepciones.ExcepcionEdad;
+import ar.com.ada.billeteravirtual.security.Crypto;
+
 
 public class App {
  
@@ -19,12 +22,13 @@ public class App {
         Teclado.nextLine();
 
         while (opcion > 0) {
-
+            try {
+                
             switch (opcion) {
             case 1:
-                altaPersona();
+                    alta();
+                    
                 break;
-
             case 2:
                 baja();
                 break;
@@ -50,6 +54,10 @@ public class App {
 
             opcion = Teclado.nextInt();
             Teclado.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("El sistema no funciona");
+                }
         }
 
         // Hago un safe exit del manager
@@ -58,7 +66,7 @@ public class App {
 
     }
 
-    public static void altaPersona() {
+    public static void alta() {
         Persona p = new Persona();
         System.out.println("Ingrese el nombre:");
         p.setNombre(Teclado.nextLine());
@@ -83,55 +91,55 @@ public class App {
             u.setUsername(p.getEmail());
             System.out.println("Su nombre de usuario es " + u.getUsername());
             System.out.println("Ingrese su password:");
-            u.setPassword(Teclado.nextLine());
+            
+            //La password ingresa en texto claro a la variable y luego se encripta
+            String passwordEnTextoClaro;
+            String passwordEncriptada;
+            String passwordEnTextoClaroDesencriptado;
+
+            passwordEnTextoClaro = Teclado.nextLine();
+                                                                      //u.getUserName()  
+            passwordEncriptada = Crypto.encrypt(passwordEnTextoClaro, "shakalaka!!!");
+
+            passwordEnTextoClaroDesencriptado = Crypto.decrypt(passwordEncriptada, "shakalaka!!!");
+
+            System.out.println("Tu password encriptada es :" +  passwordEncriptada);
+
+            System.out.println("Tu password desencriptada es :" +  passwordEnTextoClaroDesencriptado);
+
+            if (passwordEnTextoClaro.equals(passwordEnTextoClaroDesencriptado))
+            {
+                System.out.println("Ambas passwords coinciden");
+            }
+            else {
+                System.out.println("Las passwords no coinciden, nunca debio entrar aqui");
+            }
+
+            u.setPassword(passwordEncriptada);
 
             /*
              * System.out.println("Su mail es:"); u.setUserEmail(p.getEmail());
              */
-            System.out.println("Ingrese su email de usuario:");
-            u.setEmail(Teclado.nextLine());
+            //System.out.println("Ingrese su email de usuario:");
+            u.setEmail(u.getUsername());
 
-            u.setPersonaID(p.getPersonaId());
-            ABMUsuario.create(u);
+            p.setUsuario(u);
+            ///u.setPersona(p); <- esta linea hariaa falta si no lo hacemos en el p.SetUsuario(u)
+            //u.setPersonaId(p.getPesonaId());
+            //ABMUsuario.create(u);
 
-            System.out.println("Usuario generado con exito.  " + u);
+            //System.out.println("Usuario generado con exito.  " + u);
         }
+
+        ABMPersona.create(p);
+
+        System.out.println("Persona generada con exito.  " + p);
+        if (p.getUsuario() != null)
+            System.out.println("Tambien se le creo un usuario: " + p.getUsuario().getUsername());
     }
+    
 
-    public static void altaUsuario() {
-        Usuario u = new Usuario();
-        System.out.println("Ingrese el username:");
-        u.setUsername(Teclado.nextLine());
-        System.out.println("Ingrese el Email:");
-        u.setEmail(Teclado.nextLine());
-        System.out.println("Ingrese la password:");
-        u.setPassword(Teclado.nextLine());
-      
-
-        ABMUsuario.create(u);
-         
-        System.out.println("Usuario generado con exito.  " + u);
-        System.out.println("Desea crear una persona para ese usuario?");
-
-        String rta;
-        rta = Teclado.nextLine();
-        if (rta.equals("si")) {
-
-            Persona p = new Persona();
-            p.setNombre(u.getEmail());
-            System.out.println("El ID de la persona  es " + u.getPersonaID());
-            
-             System.out.println("Su mail es:"); u.setEmail(p.getEmail());
-            
-            System.out.println("Ingrese su email de usuario:");
-            u.setEmail(Teclado.nextLine());
-
-            u.setPersonaID(p.getPersonaId());
-            ABMUsuario.create(u);
-
-            System.out.println("Usuario generado con exito.  " + u);
-        }
-    }
+    
     
 
     public static void baja() {

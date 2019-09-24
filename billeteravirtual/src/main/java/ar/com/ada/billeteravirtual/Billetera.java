@@ -1,7 +1,11 @@
 package ar.com.ada.billeteravirtual;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -13,14 +17,16 @@ import javax.persistence.Table;
 @Table(name = "billetera")
 public class Billetera {
 
+@Id
+@Column (name = "billetera_id")
+@GeneratedValue (strategy = GenerationType.IDENTITY)
+public Integer billeteraID;    
+
 @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
 private Cuenta cuenta;
 
-
-//List <Cuenta> 
-
-
-
+@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+private Persona persona;
 
 
 }
