@@ -2,7 +2,6 @@ package ar.com.ada.billeteravirtual;
 
 import javax.persistence.*;
 
-import ar.com.ada.billeteravirtual.excepciones.EdadException;
 
 /**
  * Persona

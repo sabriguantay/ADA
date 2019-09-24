@@ -1,22 +1,29 @@
 package ar.com.ada.billeteravirtual;
 
+import javax.persistence.*;
+
 /**
  * Cuenta
  */
+@Entity
+@Table(name = "cuenta")
 public class Cuenta {
 
-//id;
+    @Id
+    @Column(name = "cuenta_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer cuentaID;
 
-public String moneda;
-public double saldo;
-public double saldoPendiente;
-public String nroCuenta;
+    public String moneda;
+    public double saldo;
+    @Column(name = "saldo_disponible")
+    public double saldoDisponible;
 
+    @OneToMany 
+    @JoinColumn (name = "billetera_id", referencedColumnName = "billetera_id")
+    private Billetera billetera;
 
-public void dineroPendiente(){};
-public void ultimoMovimiento(){};
-public void dineroIngresado(){};
-public void dineroExtraido(){};
-
+    @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
+    private Movimiento movimiento;
 
 }

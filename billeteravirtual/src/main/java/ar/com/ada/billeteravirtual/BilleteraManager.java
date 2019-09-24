@@ -1,4 +1,4 @@
-/*package ar.com.ada.billeteravirtual;
+package ar.com.ada.billeteravirtual;
 
 
 import java.util.logging.Level;
@@ -11,11 +11,11 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-
 /**
- * CoordenadaManager
- 
-public class CoordenadaManager {
+ * BilleteraManager
+ */
+public class BilleteraManager {
+
 
     protected SessionFactory sessionFactory;
 
@@ -39,50 +39,49 @@ public class CoordenadaManager {
         sessionFactory.close();
     }
 
-    protected void create(Persona persona) {
+    protected void create(Billetera billetera) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.save(persona);
+        session.save(billetera);
   
         session.getTransaction().commit();
         session.close();
     }
 
-    public Persona read(int personaId) {
+    public Billetera read(int billeteraId) {
         Session session = sessionFactory.openSession();
 
-        Persona persona = session.get(Persona.class, personaId);
+        Billetera billetera = session.get(Billetera.class, billeteraId);
 
         session.close();
 
-        return persona;
+        return billetera;
     }
 
   
-    protected void update(Persona persona) {
+    protected void update(Billetera billetera) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.update(persona);
+        session.update(billetera);
 
         session.getTransaction().commit();
         session.close();
     }
 
-    protected void delete(Persona persona) {
+    protected void delete(Billetera billetera) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.delete(persona);
+        session.delete(billetera);
 
         session.getTransaction().commit();
         session.close();
     }
-
-
 }
-*/
+
+

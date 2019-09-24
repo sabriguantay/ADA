@@ -1,5 +1,4 @@
-/*package ar.com.ada.billeteravirtual;
-
+package ar.com.ada.billeteravirtual;
 
 import java.util.logging.Level;
 
@@ -14,8 +13,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  * CoordenadaManager
- 
-public class CoordenadaManager {
+ */
+public class MovimientoManager {
 
     protected SessionFactory sessionFactory;
 
@@ -39,50 +38,38 @@ public class CoordenadaManager {
         sessionFactory.close();
     }
 
-    protected void create(Persona persona) {
+    protected void create(Movimiento movimiento) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.save(persona);
+        session.save(movimiento);
   
         session.getTransaction().commit();
         session.close();
     }
 
-    public Persona read(int personaId) {
-        Session session = sessionFactory.openSession();
-
-        Persona persona = session.get(Persona.class, personaId);
-
-        session.close();
-
-        return persona;
-    }
-
+    
   
-    protected void update(Persona persona) {
+    protected void update(Movimiento movimiento) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.update(persona);
+        session.update(movimiento);
 
         session.getTransaction().commit();
         session.close();
     }
 
-    protected void delete(Persona persona) {
+    protected void delete(Movimiento movimiento) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.delete(persona);
+        session.delete(movimiento);
 
         session.getTransaction().commit();
         session.close();
     }
-
-
 }
-*/

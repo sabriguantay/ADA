@@ -12,7 +12,7 @@ public class Usuario {
     @Id
     @Column(name = "usuario_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int usuarioID;
+    private Integer usuarioID;
     private String username;
     private String password;
     private String email;
@@ -74,6 +74,11 @@ public class Usuario {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [email=" + email + ", password=" + password + ", username=" + username + "]";
     }
 
 }

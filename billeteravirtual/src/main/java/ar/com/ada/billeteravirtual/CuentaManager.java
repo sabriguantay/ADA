@@ -1,22 +1,21 @@
-/*package ar.com.ada.billeteravirtual;
+package ar.com.ada.billeteravirtual;
 
 
-import java.util.logging.Level;
-
-//import javax.persistence.Query;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
-
+    import java.util.logging.Level;
+    
+    //import javax.persistence.Query;
+    
+    import org.hibernate.Session;
+    import org.hibernate.SessionFactory;
+    import org.hibernate.boot.MetadataSources;
+    import org.hibernate.boot.registry.StandardServiceRegistry;
+    import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 /**
- * CoordenadaManager
- 
-public class CoordenadaManager {
+ * CuentaManager
+ */
+public class CuentaManager {
 
+    
     protected SessionFactory sessionFactory;
 
     protected void setup() {
@@ -39,50 +38,40 @@ public class CoordenadaManager {
         sessionFactory.close();
     }
 
-    protected void create(Persona persona) {
+    protected void create(Cuenta cuenta) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.save(persona);
+        session.save(cuenta);
   
         session.getTransaction().commit();
         session.close();
     }
 
-    public Persona read(int personaId) {
-        Session session = sessionFactory.openSession();
+   
 
-        Persona persona = session.get(Persona.class, personaId);
-
-        session.close();
-
-        return persona;
-    }
-
-  
-    protected void update(Persona persona) {
+    protected void update(Cuenta cuenta) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.update(persona);
+        session.update(cuenta);
 
         session.getTransaction().commit();
         session.close();
     }
 
-    protected void delete(Persona persona) {
+    protected void delete(Cuenta cuenta) {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.delete(persona);
+        session.delete(cuenta);
 
         session.getTransaction().commit();
         session.close();
     }
-
+    
 
 }
-*/
