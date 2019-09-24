@@ -14,17 +14,21 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int usuarioID;
     private String username;
-    private String contrasenia;
+    private String password;
     private String email;
-    @Column(name = "persona_id")
-    private int personaID;
+    
+    
+    @OneToOne             //persona id es la FK de Usuario
+    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id") //PK en Persona
+    //@MapsId -- segunda opcion. se aplica sin el joinColumn. Lo mapea
+    private Persona persona;
 
-    public Usuario(int usuarioID, String username, String contrasenia, String email, int personaID) {
-        this.usuarioID = usuarioID;
+    public Usuario(String username, String password, String email) {
+       
         this.username = username;
-        this.contrasenia = contrasenia;
+        this.password = password;
         this.email = email;
-        this.personaID = personaID;
+        
     }
     
 
@@ -44,12 +48,12 @@ public class Usuario {
         this.username = username;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -63,14 +67,13 @@ public class Usuario {
     public Usuario() {
     }
 
+    
+    public Persona getPersona() {
+        return persona;
+    }
 
-	public int getPersonaID() {
-		return personaID;
-	}
-
-
-	public void setPersonaID(int personaID) {
-		this.personaID = personaID;
-	}
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
 
 }
