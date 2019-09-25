@@ -19,7 +19,7 @@ public class Movimiento {
 
 @Column (name = "fecha_hora")
   public Date fechaMovimiento;
-  public Coordenada ubicacion;
+  //public Coordenada ubicacion;
   public double importe;
   public String tipo_operacion;
   public String concepto_operacion;
@@ -30,9 +30,11 @@ public class Movimiento {
   public int cuenta_destino;
   public int cuenta_origen;
 
-  @OneToMany
-  @JoinColumn(name = "movimiento_id", referencedColumnName = "movimiento_id")
-    private Cuenta cuenta;
+
+
+  @ManyToOne
+  @JoinColumn (name = "cuenta_id", referencedColumnName = "cuenta_id")
+  private Cuenta cuenta;
 
   public double getImporte() {
     return importe;
@@ -58,13 +60,13 @@ public class Movimiento {
     this.fechaMovimiento = fechaMovimiento;
   }
 
-  public Coordenada getUbicacion() {
+  /*public Coordenada getUbicacion() {
     return ubicacion;
   }
 
   public void setUbicacion(Coordenada ubicacion) {
     this.ubicacion = ubicacion;
-  }
+  }*/
 
   public String getTipo_operacion() {
     return tipo_operacion;

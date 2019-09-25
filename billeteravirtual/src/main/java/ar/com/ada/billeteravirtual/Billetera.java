@@ -16,16 +16,14 @@ public class Billetera {
 @Id
 @Column (name = "billetera_id")
 @GeneratedValue (strategy = GenerationType.IDENTITY)
-public Integer billeteraID; 
+public int billeteraID; 
 
 @OneToMany(mappedBy = "billetera", cascade = CascadeType.ALL)
-private Cuenta cuenta;
+private List <Cuenta> cuentas = new ArrayList<Cuenta>();
 
 @OneToOne
 @JoinColumn (name = "persona_id", referencedColumnName = "persona_id")
 private Persona persona;
-
-private List <Cuenta> cuentas = new ArrayList<Cuenta>();
 
 
 
@@ -33,7 +31,7 @@ public Billetera (){
 
 }
 
-public Billetera (Integer billeteraId){
+public Billetera (int billeteraId){
     this.billeteraID= billeteraId;
 }
 
@@ -42,11 +40,11 @@ public Billetera (Integer billeteraId){
         return persona;
     }
 
-    public Integer getBilleteraID() {
+    public int getBilleteraID() {
         return billeteraID;
     }
 
-    public void setBilleteraID(Integer billeteraID) {
+    public void setBilleteraID(int billeteraID) {
         this.billeteraID = billeteraID;
     }
 

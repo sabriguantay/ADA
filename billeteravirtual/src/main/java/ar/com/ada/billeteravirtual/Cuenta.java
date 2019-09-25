@@ -15,7 +15,7 @@ public class Cuenta {
     @Id
     @Column(name = "cuenta_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer cuentaID;
+    public int cuentaID;
 
     public String moneda;
     public double saldo;
@@ -73,12 +73,12 @@ public class Cuenta {
 	}
 
 
-	public Integer getCuentaID() {
+	public int getCuentaID() {
 		return cuentaID;
 	}
 
 
-	public void setCuentaID(Integer cuentaID) {
+	public void setCuentaID(int cuentaID) {
 		this.cuentaID = cuentaID;
 	}
 
