@@ -90,7 +90,11 @@ public class Cuenta {
         this.movimientos = movimientos;
     }
 
-    
+    public void agregarMovimientos(Movimiento movimiento){
+		movimiento.setCuenta(this);
+		this.movimientos.add(movimiento);
+		this.setSaldo(this.getSaldo() + movimiento.getImporte());
+	}
 
 
  

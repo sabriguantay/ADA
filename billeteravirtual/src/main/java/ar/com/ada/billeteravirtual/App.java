@@ -11,6 +11,7 @@ public class App {
     public static UsuarioManager ABMUsuario = new UsuarioManager();
     public static BilleteraManager ABMBilletera = new BilleteraManager();
     public static CuentaManager ABMCuenta = new CuentaManager();
+    public static MovimientoManager ABMmovimiento = new MovimientoManager();
 
 
     public static void main(String[] args) throws Exception {
@@ -19,6 +20,7 @@ public class App {
             ABMUsuario.setup();
             ABMBilletera.setup();
             ABMCuenta.setup();
+            ABMmovimiento.setup();
 
             printOpciones();
 
@@ -70,6 +72,8 @@ public class App {
             ABMUsuario.exit();
             ABMBilletera.exit();
             ABMCuenta.exit();
+            ABMmovimiento.exit();        
+        
         }
 
         catch (Exception e) {
@@ -142,7 +146,7 @@ public class App {
             // ABMUsuario.create(u);
 
             // System.out.println("Usuario generado con exito. " + u);
-        }
+        
 
         ABMPersona.create(p);
 
@@ -152,12 +156,23 @@ public class App {
         Cuenta c  = new Cuenta();
         c.setMoneda("ARS");
         b.agregarCuentas(c);
-        c.getSaldo();
+    
+        ABMBilletera.create(b);
 
         Movimiento m = new Movimiento();
         m.setImporte(2222);
+        m.setDe_usuario(u.getUsuarioID());
+        m.setA_usuario(u.getUsuarioID());
+        m.setCuenta_destino(c.getCuentaID());
+        m.setCuenta_origen(c.getCuentaID());
         m.setConcepto_operacion("Deposito");
-        c.setSaldo(c.getSaldo()+m.getImporte());
+        m.setTipo_operacion("Deposito");
+        m.setEstado(0);
+        m.setFechaMovimiento(new Date());
+        m.setDetalle("Operacion realizada : " + m.getTipo_operacion()+ "Total de " + m.getImporte() );
+        
+        c.agregarMovimientos(m);
+        
 
         System.out.println("Persona generada con exito.  " + p);
         if (p.getUsuario() != null)
