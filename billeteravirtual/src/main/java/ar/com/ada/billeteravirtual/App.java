@@ -2,6 +2,8 @@ package ar.com.ada.billeteravirtual;
 
 import java.util.*;
 
+import org.hibernate.exception.ConstraintViolationException;
+//import ar.com.ada.billeteravirtual.excepciones.PersonaEdadException;
 import ar.com.ada.billeteravirtual.security.Crypto;
 
 public class App {
@@ -173,13 +175,13 @@ public class App {
         
         c.agregarMovimientos(m);
         
-
+        //
         System.out.println("Persona generada con exito.  " + p);
         if (p.getUsuario() != null)
             System.out.println("Tambien se le creo un usuario: " + p.getUsuario().getUsername());
 
 
-    
+        }
     }
 
     public static void baja() {
@@ -194,8 +196,14 @@ public class App {
             System.out.println("Persona no encontrada.");
 
         } else {
-            ABMPersona.delete(personaEncontrada);
+            try {
+                ABMPersona.delete(personaEncontrada);
             System.out.println("El registro de " + personaEncontrada.getDni() + " ha sido eliminado.");
+            } catch (ConstraintViolationException excepPersonaconUsuario) {
+                System.out.println("No se puede eliminar una persona que tenga usuario"
+               + "Error: " + excepPersonaconUsuario.getCause() );
+            }
+            
         }
     }
 

@@ -25,8 +25,8 @@ public class Movimiento {
   public String concepto_operacion;
   public String detalle;
   public int estado;
-  public String de_usuario;
-  public String a_usuario;
+  public int de_usuario;
+  public int a_usuario;
   public int cuenta_destino;
   public int cuenta_origen;
 
@@ -98,19 +98,19 @@ public class Movimiento {
     this.estado = estado;
   }
 
-  public String getDe_usuario() {
+  public int getDe_usuario() {
     return de_usuario;
   }
 
-  public void setDe_usuario(String de_usuario) {
+  public void setDe_usuario(int de_usuario) {
     this.de_usuario = de_usuario;
   }
 
-  public String getA_usuario() {
+  public int getA_usuario() {
     return a_usuario;
   }
 
-  public void setA_usuario(String a_usuario) {
+  public void setA_usuario(int a_usuario) {
     this.a_usuario = a_usuario;
   }
 
