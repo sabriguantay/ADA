@@ -23,6 +23,10 @@ public class Usuario {
     //@MapsId -- segunda opcion. se aplica sin el joinColumn. Lo mapea
     private Persona persona;
 
+    public Usuario (){
+
+    }
+
     public Usuario(String username, String password, String email) {
        
         this.username = username;
@@ -64,8 +68,7 @@ public class Usuario {
         this.email = email;
     }
 
-    public Usuario() {
-    }
+
 
     
     public Persona getPersona() {

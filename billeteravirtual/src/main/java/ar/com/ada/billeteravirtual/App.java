@@ -2,7 +2,6 @@ package ar.com.ada.billeteravirtual;
 
 import java.util.*;
 
-import ar.com.ada.billeteravirtual.excepciones.ExcepcionEdad;
 import ar.com.ada.billeteravirtual.security.Crypto;
 
 public class App {
@@ -10,11 +9,16 @@ public class App {
     public static Scanner Teclado = new Scanner(System.in);
     public static PersonaManager ABMPersona = new PersonaManager();
     public static UsuarioManager ABMUsuario = new UsuarioManager();
+    public static BilleteraManager ABMBilletera = new BilleteraManager();
+    public static CuentaManager ABMCuenta = new CuentaManager();
+
 
     public static void main(String[] args) throws Exception {
         try {
             ABMPersona.setup();
             ABMUsuario.setup();
+            ABMBilletera.setup();
+            ABMCuenta.setup();
 
             printOpciones();
 
@@ -28,9 +32,9 @@ public class App {
                     try {
                         alta();
 
-                    } catch (ExcepcionEdad excepEdad) {
+                    } catch (Exception excepEdad) {
                         System.out.println("La edad ingresada es a partir de los 18 años");
-                        throw excepEdad;
+                        
                     }
 
                     break;
@@ -64,6 +68,8 @@ public class App {
             // Hago un safe exit del manager
             ABMPersona.exit();
             ABMUsuario.exit();
+            ABMBilletera.exit();
+            ABMCuenta.exit();
         }
 
         catch (Exception e) {
@@ -140,9 +146,25 @@ public class App {
 
         ABMPersona.create(p);
 
+        Billetera b = new Billetera ();
+        b.setPersona(p);
+
+        Cuenta c  = new Cuenta();
+        c.setMoneda("ARS");
+        b.agregarCuentas(c);
+        c.getSaldo();
+
+        Movimiento m = new Movimiento();
+        m.setImporte(2222);
+        m.setConcepto_operacion("Deposito");
+        c.setSaldo(c.getSaldo()+m.getImporte());
+
         System.out.println("Persona generada con exito.  " + p);
         if (p.getUsuario() != null)
             System.out.println("Tambien se le creo un usuario: " + p.getUsuario().getUsername());
+
+
+    
     }
 
     public static void baja() {
@@ -350,6 +372,10 @@ public class App {
         for (Persona p : personas) {
             System.out.println("Id: " + p.getPersonaId() + " Nombre: " + p.getNombre());
         }
+    }
+
+    public static void agregarCuenta(){
+
     }
 
     public static void printOpciones() {
