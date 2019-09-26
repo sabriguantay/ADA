@@ -31,7 +31,9 @@ public class Cuenta {
     private List<Movimiento> movimientos = new ArrayList<Movimiento>();
     
     
-
+	public Cuenta(){
+		
+	}
 
 	public String getMoneda() {
 		return moneda;
