@@ -5,19 +5,18 @@ package ar.com.ada.billeteravirtual;
  */
 public class Dinero {
 
-    public Integer dineroId;
-    public String moneda;
-    public int cantidad;
+    protected int dineroId;
+    protected String moneda;
+    protected int cantidad;
 
-    public Dinero (){
-        
+    public Dinero(){
     }
 
-    public Integer getDineroId() {
+    public int getDineroId() {
         return dineroId;
     }
 
-    public void setDineroId(Integer dineroId) {
+    public void setDineroId(int dineroId) {
         this.dineroId = dineroId;
     }
 
@@ -36,5 +35,4 @@ public class Dinero {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
 }

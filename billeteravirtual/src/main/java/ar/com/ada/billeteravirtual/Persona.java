@@ -2,6 +2,7 @@ package ar.com.ada.billeteravirtual;
 
 import javax.persistence.*;
 
+import ar.com.ada.billeteravirtual.excepciones.PersonaEdadException;
 
 /**
  * Persona
@@ -13,16 +14,16 @@ public class Persona {
     @Id
     @Column(name = "persona_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int pesonaId;
-    public String nombre;
-    public String dni;
-    public int edad;
-    public String email;
+    private Integer pesonaId;
+    private String nombre;
+    private String dni;
+    private int edad;
+    private String email;
 
     @OneToOne( mappedBy = "persona", cascade = CascadeType.ALL)
     private Usuario usuario;
 
-    @OneToOne (mappedBy = "persona", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL)
     private Billetera billetera;
 
     public Persona(String nombre, String dni, int edad, String email) {
@@ -35,11 +36,11 @@ public class Persona {
     public Persona() {
     }
 
-    public int getPersonaId() {
+    public int getPesonaId() {
         return pesonaId;
     }
 
-    public void setPersonaId(int pesonaId) {
+    public void setPesonaId(int pesonaId) {
         this.pesonaId = pesonaId;
     }
 
@@ -63,7 +64,12 @@ public class Persona {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(int edad) throws PersonaEdadException {
+        if(edad < 18)
+        {
+            //no se ejecuta nada mas despues del throw
+            throw new PersonaEdadException(this, "ocurrio un error con la edad");
+        }
         this.edad = edad;
     }
 
@@ -85,9 +91,9 @@ public class Persona {
      */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-        this.usuario.setPersona(this); // Vinculamos ambos objetos entre si
+        this.usuario.setPersona(this); //Vinculamos ambos objetos entre si
     }
-
+    
     /**
      * @return the usuario
      */
@@ -97,12 +103,11 @@ public class Persona {
 
     public void setBilletera(Billetera billetera) {
         this.billetera = billetera;
-        this.billetera.setPersona(this); // Vinculamos ambos objetos entre si
+        this.billetera.setPersona(this);
     }
-
-    
 
     public Billetera getBilletera() {
         return billetera;
     }
+
 }

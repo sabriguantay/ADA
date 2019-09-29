@@ -7,149 +7,135 @@ import javax.persistence.*;
 /**
  * Movimiento
  */
-
 @Entity
 @Table(name = "movimiento")
 public class Movimiento {
 
-@Id
-@Column (name = "movimiento_id")
-@GeneratedValue (strategy = GenerationType.IDENTITY) 
-  public Integer movimientoId;
+    @Id
+    
+    @Column(name = "movimiento_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int movimientoId;
+    @Column(name = "fecha_hora")
+    protected Date fecha;
+    //protected Coordenada ubicacion;
+    protected double importe;
+    @Column(name = "tipo_operacion")
+    protected String tipoOperacion; // -> entrada | salida
+    @Column(name = "concepto_operacion")
+    protected String conceptoOperacion; // -> depositos / cobros | pagos / transferencias
+    protected String detalle; //retiro por cajero, es un mensaje
+    protected int estado; //estado de movimiento -> aprobado / pendiente / rechazado
+    @Column(name = "de_usuario")
+    protected int deUsuario;
+    @Column(name = "a_usuario")
+    protected int aUsuario;
+    @Column(name = "cuenta_destino")
+    protected int cuentaDestino;
+    @Column(name = "cuenta_origen")
+    protected int cuentaOrigen;
 
-@Column (name = "fecha_hora")
-  public Date fechaMovimiento;
-  //public Coordenada ubicacion;
-  public double importe;
-  public String tipo_operacion;
-  public String concepto_operacion;
-  public String detalle;
-  public int estado;
-  public int de_usuario;
-  public int a_usuario;
-  public int cuenta_destino;
-  public int cuenta_origen;
+    @ManyToOne
+    @JoinColumn(name = "cuenta_id", referencedColumnName = "cuenta_id")
+    private Cuenta cuenta;
 
+    public Movimiento(){
+    }
 
+    public int getMovimientoId() {
+        return movimientoId;
+    }
 
-  @ManyToOne
-  @JoinColumn (name = "cuenta_id", referencedColumnName = "cuenta_id")
-  private Cuenta cuenta;
+    public void setMovimientoId(int movimientoId) {
+        this.movimientoId = movimientoId;
+    }
 
-  public double getImporte() {
-    return importe;
-  }
+    public Date getFecha() {
+        return fecha;
+    }
 
-  public void setImporte(double importe) {
-    this.importe = importe;
-  }
+    public void setFecha(Date date) {
+        this.fecha = date;
+    }
 
-  public Integer getMovimientoId() {
-    return movimientoId;
-  }
+    public double getImporte() {
+        return importe;
+    }
 
-  public void setMovimientoId(Integer movimientoId) {
-    this.movimientoId = movimientoId;
-  }
+    public void setImporte(double importe) {
+        this.importe = importe;
+    }
 
-  public Date getFechaMovimiento() {
-    return fechaMovimiento;
-  }
+    public String getTipoOperacion() {
+        return tipoOperacion;
+    }
 
-  public void setFechaMovimiento(Date fechaMovimiento) {
-    this.fechaMovimiento = fechaMovimiento;
-  }
+    public void setTipoOperacion(String tipoOperacion) {
+        this.tipoOperacion = tipoOperacion;
+    }
 
-  /*public Coordenada getUbicacion() {
-    return ubicacion;
-  }
+    public String getConceptoOperacion() {
+        return conceptoOperacion;
+    }
 
-  public void setUbicacion(Coordenada ubicacion) {
-    this.ubicacion = ubicacion;
-  }*/
+    public void setConceptoOperacion(String conceptoOperacion) {
+        this.conceptoOperacion = conceptoOperacion;
+    }
 
-  public String getTipo_operacion() {
-    return tipo_operacion;
-  }
+    public String getDetalle() {
+        return detalle;
+    }
 
-  public void setTipo_operacion(String tipo_operacion) {
-    this.tipo_operacion = tipo_operacion;
-  }
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
 
-  public String getConcepto_operacion() {
-    return concepto_operacion;
-  }
+    public int getEstado() {
+        return estado;
+    }
 
-  public void setConcepto_operacion(String concepto_operacion) {
-    this.concepto_operacion = concepto_operacion;
-  }
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
-  public String getDetalle() {
-    return detalle;
-  }
+    public int getDeUsuario() {
+        return deUsuario;
+    }
 
-  public void setDetalle(String detalle) {
-    this.detalle = detalle;
-  }
+    public void setDeUsuario(int deUsuario) {
+        this.deUsuario = deUsuario;
+    }
 
-  public int getEstado() {
-    return estado;
-  }
+    public int getaUsuario() {
+        return aUsuario;
+    }
 
-  public void setEstado(int estado) {
-    this.estado = estado;
-  }
+    public void setaUsuario(int aUsuario) {
+        this.aUsuario = aUsuario;
+    }
 
-  public int getDe_usuario() {
-    return de_usuario;
-  }
+    public int getCuentaDestino() {
+        return cuentaDestino;
+    }
 
-  public void setDe_usuario(int de_usuario) {
-    this.de_usuario = de_usuario;
-  }
+    public void setCuentaDestino(int cuentaDestino) {
+        this.cuentaDestino = cuentaDestino;
+    }
 
-  public int getA_usuario() {
-    return a_usuario;
-  }
+    public int getCuentaOrigen() {
+        return cuentaOrigen;
+    }
 
-  public void setA_usuario(int a_usuario) {
-    this.a_usuario = a_usuario;
-  }
+    public void setCuentaOrigen(int cuentaOrigen) {
+        this.cuentaOrigen = cuentaOrigen;
+    }
 
-  public int getCuenta_destino() {
-    return cuenta_destino;
-  }
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
 
-  public void setCuenta_destino(int cuenta_destino) {
-    this.cuenta_destino = cuenta_destino;
-  }
-
-  public int getCuenta_origen() {
-    return cuenta_origen;
-  }
-
-  public void setCuenta_origen(int cuenta_origen) {
-    this.cuenta_origen = cuenta_origen;
-  }
-
-  public Cuenta getCuenta() {
-    return cuenta;
-  }
-
-  public void setCuenta(Cuenta cuenta) {
-    this.cuenta = cuenta;
-  }
-
-  /*@OneToOne
-    @JoinColumn(name = "a_usuario_id")
-
-    @OneToOne
-    @JoinColumn(name = "de_usuario_id")*/
-     
-
-  
-
-
-
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
 
 }

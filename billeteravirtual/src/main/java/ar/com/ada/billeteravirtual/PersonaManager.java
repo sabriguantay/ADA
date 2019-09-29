@@ -11,7 +11,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-
 public class PersonaManager {
     protected SessionFactory sessionFactory;
 
@@ -105,8 +104,6 @@ public class PersonaManager {
 
         return todas;
 
-        
-
     }
 
     /**
@@ -128,8 +125,5 @@ public class PersonaManager {
 
         return personas;
 
-        
-
     }
-
 }

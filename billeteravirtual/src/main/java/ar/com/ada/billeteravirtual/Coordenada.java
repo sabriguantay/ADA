@@ -1,18 +1,13 @@
 package ar.com.ada.billeteravirtual;
 
-
 /**
- * Coordenadas
+ * Coordenada
  */
 public class Coordenada {
 
-public float latitud;
-public float longitud;
-
-public Coordenada (){
+    public float latitud;
+    public float longitud;
     
+    public Coordenada(){
+    }
 }
-}
-
-
-

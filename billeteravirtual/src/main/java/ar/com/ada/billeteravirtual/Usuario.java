@@ -1,6 +1,6 @@
 package ar.com.ada.billeteravirtual;
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 /**
  * Usuario
@@ -12,44 +12,48 @@ public class Usuario {
     @Id
     @Column(name = "usuario_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer usuarioID;
-    private String username;
+    private Integer usuarioId;
+    private String userName;
     private String password;
-    private String email;
-    
-    
-    @OneToOne             //persona id es la FK de Usuario
-    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id") //PK en Persona
-    //@MapsId -- segunda opcion. se aplica sin el joinColumn. Lo mapea
+    @Column(name = "email")
+    private String userEmail;
+    /*@Column(name = "persona_id")
+    private int personaId;*/
+
+    // ACTIVO lel OneTo One, pero para que funcione persona tiene quetener un valor.
+    // Aca no hace falta el cascade
+    @OneToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
+    // @MapsId
     private Persona persona;
 
-    public Usuario (){
-
-    }
-
-    public Usuario(String username, String password, String email) {
-       
-        this.username = username;
+    public Usuario(String userName, String password, String email) {
+        this.userName = userName;
         this.password = password;
-        this.email = email;
-        
-    }
-    
-
-    public int getUsuarioID() {
-        return usuarioID;
+        this.userEmail = email;
     }
 
-    public void setUsuarioID(int usuarioID) {
-        this.usuarioID = usuarioID;
+    public Usuario() {
     }
 
-    public String getUsername() {
-        return username;
+    public Usuario(String password) {
+        this.password = password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -60,17 +64,31 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario [User Name=" + userName + ", Password=" + password + ", User Email=" + userEmail + "]";
+    }
 
+    /*public int getPersonaId() {
+        return personaId;
+    }
 
-    
+    public void setPersonaId(int personaId) {
+        this.personaId = personaId;
+    }
+
+    public Usuario(int personaId) {
+        this.personaId = personaId;
+    }*/
+
     public Persona getPersona() {
         return persona;
     }
@@ -79,9 +97,9 @@ public class Usuario {
         this.persona = persona;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario [email=" + email + ", password=" + password + ", username=" + username + "]";
-    }
+    /*
+     * public String getEmail() { return email; } public void setEmail(String email)
+     * { this.email = email; }
+     */
 
 }
