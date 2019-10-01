@@ -1,0 +1,84 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Buque de carga>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Buque de carga"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Challenge 2>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Challenge 2"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Challenge ABM>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Challenge ABM"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Challenge>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Challenge"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Ejercicio29.8>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Ejercicio29.8"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Ejercicio9>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Ejercicio9"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Ejerciciojava2>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Ejerciciojava2"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Ejerciciojavaweb>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Ejerciciojavaweb"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<Netflix>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "Netflix"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<app>",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "app"
+        }
+    ]
+}

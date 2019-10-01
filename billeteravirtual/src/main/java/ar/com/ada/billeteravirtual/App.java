@@ -18,6 +18,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         try {
+    
             ABMPersona.setup();
             ABMUsuario.setup();
             ABMBilletera.setup();
@@ -73,6 +74,7 @@ public class App {
             ABMBilletera.exit();
             ABMCuenta.exit();
             ABMMovimiento.exit();
+            System.exit(0);
 
         } catch (Exception e) {
             System.out.println("Que lindo mi sistema,se rompio mi sistema");
