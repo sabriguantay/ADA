@@ -10,18 +10,5 @@ import ar.com.ada.api.billeteravirtual.repo.CuentaRepository;
  */
 public class CuentaService {
 
-@Autowired 
-CuentaRepository cuentaRepo;
 
-@Autowired
-BilleteraService billeteraService;
-
-public Cuenta getCuentaPorMoneda (int billeteraId, String moneda){
-    Billetera b = billeteraService.buscarPorId(billeteraId);
-    for (Cuenta c = b.getCuentas()){
-        if (c.getMoneda().equals(moneda)){
-            return c;
-        }
-    }
-}
 }

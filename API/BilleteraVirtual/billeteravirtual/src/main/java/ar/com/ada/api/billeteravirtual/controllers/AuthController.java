@@ -22,12 +22,12 @@ public class AuthController {
     @PostMapping("auth/register")
     public RegistrationResponse postRegisterUser(@RequestBody RegistrationRequest req) throws PersonaEdadException {
         RegistrationResponse r = new RegistrationResponse();
-        //aca creamos la persona y el usuario a traves del service.
+    
 
-        int usuarioCreadoId = usuarioService.alta(req.fullName, req.dni, req.email, req.edad, req.password, req.moneda);
-        
+        int usuarioCreadoId = usuarioService.crearUsuario(req.fullName, req.dni, req.edad, req.email, req.password);
+        r
         r.isOk = true;
-        r.message = "Te registraste con exitoooo";
+        r.message = "Te registraste con exito";
         r.usuarioId = usuarioCreadoId;
         return r;
     }

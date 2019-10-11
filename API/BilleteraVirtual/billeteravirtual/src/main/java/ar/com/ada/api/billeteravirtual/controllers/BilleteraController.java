@@ -1,9 +1,7 @@
 package ar.com.ada.api.billeteravirtual.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.billeteravirtual.entities.*;
 import ar.com.ada.api.billeteravirtual.models.request.MovimientoRequest;

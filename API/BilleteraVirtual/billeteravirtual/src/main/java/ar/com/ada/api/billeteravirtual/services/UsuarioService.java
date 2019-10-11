@@ -49,39 +49,45 @@ public class UsuarioService {
         return null;
     }
 
-    public int alta(String nombre, String dni, String email, int edad, String password, String moneda)throws PersonaEdadException {
+    public Usuario crearUsuario(String nombre, String dni, int edad, String email, String password) 
+    throws PersonaEdadException {
+
         Persona p = new Persona();
         p.setNombre(nombre);
         p.setDni(dni);
-        p.setEmail(email);
         p.setEdad(edad);
-        
+        p.setEmail(email);
+
         Usuario u = new Usuario();
         u.setUserName(p.getEmail());
         u.setUserEmail(p.getEmail());
 
         String passwordEnTextoClaro;
         String passwordEncriptada;
-        //String passwordEnTextoClaroDesencriptado;
 
         passwordEnTextoClaro = password;
         passwordEncriptada = Crypto.encrypt(passwordEnTextoClaro, u.getUserName());
-        
 
         u.setPassword(passwordEncriptada);
         p.setUsuario(u);
+
+        Billetera billetera = new Billetera();
+
+        Cuenta cuenta = new Cuenta();
+        cuenta.setMoneda("ARS");
+        billetera.agregarCuentas(cuenta);
+        billetera.setPersona(p);
+
         personaService.save(p);
 
-        Billetera b = new Billetera(p);
-        
-        Cuenta c = new Cuenta(b, moneda);
+        return u;
 
-        c.setBilletera(b);
-
-        billeteraService.save(b);
-
-        return u.getUsuarioId();
     }
+
+    public void save(Usuario usuario){
+        repo.save(usuario);
+    }
+    
 
     }
     
