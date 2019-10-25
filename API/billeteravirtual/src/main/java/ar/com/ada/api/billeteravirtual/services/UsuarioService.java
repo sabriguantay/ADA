@@ -3,9 +3,8 @@ package ar.com.ada.api.billeteravirtual.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.com.ada.api.billeteravirtual.entities.Persona;
+
 import ar.com.ada.api.billeteravirtual.entities.Usuario;
-import ar.com.ada.api.billeteravirtual.excepciones.PersonaEdadException;
 import ar.com.ada.api.billeteravirtual.repo.UsuarioRepository;
 import java.util.*;
 
@@ -29,6 +28,12 @@ public class UsuarioService {
         if (u.isPresent())
             return u.get();
         return null;
+    }
+
+    public Usuario buscarPorUsername(String username) {
+
+        return repo.findByUserName(username);
+
     }
 
     public Usuario buscarPorEmail(String email){
