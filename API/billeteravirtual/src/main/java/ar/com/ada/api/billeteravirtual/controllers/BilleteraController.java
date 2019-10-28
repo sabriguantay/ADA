@@ -25,7 +25,7 @@ import ar.com.ada.api.billeteravirtual.services.BilleteraService;
  * BilleteraCotroller
  */
 @RestController
-public class BilleteraCotroller {
+public class BilleteraController {
 
     @Autowired
     BilleteraService billeteraService;

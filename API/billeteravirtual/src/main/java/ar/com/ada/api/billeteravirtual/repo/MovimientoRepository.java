@@ -16,4 +16,6 @@ public interface MovimientoRepository extends JpaRepository<Movimiento, Integer>
 
     @Query("SELECT m FROM Movimiento m WHERE m.cuenta.billetera.billeteraId = :billeteraId AND m.cuenta.moneda= :moneda ORDER BY fechaMovimiento desc")
     List<Movimiento> FindOrderByFech(@Param("billeteraId") int billeteraId,@Param("moneda") String moneda);
+
+	List<Movimiento> findAllOrderByFecha();
 }

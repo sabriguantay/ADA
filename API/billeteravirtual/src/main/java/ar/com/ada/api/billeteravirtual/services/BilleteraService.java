@@ -19,7 +19,7 @@ import ar.com.ada.api.billeteravirtual.repo.MovimientoRepository;
 @Service
 public class BilleteraService {
     @Autowired
-    BilleteraRepository billeRepo;
+    BilleteraRepository repo;
 
     @Autowired
     UsuarioService usuarioService;
@@ -29,7 +29,7 @@ public class BilleteraService {
 
     public Billetera buscarPorId(Integer bD) {
 
-        Optional<Billetera> b = billeRepo.findById(bD);
+        Optional<Billetera> b =repo.findById(bD);
 
         if (b.isPresent())
             return b.get();
@@ -37,7 +37,7 @@ public class BilleteraService {
     }
 
     public void grabar(Billetera b) {
-        this.billeRepo.save(b);
+        this.repo.save(b);
     }
 
     public void agregarPlata(Billetera billetera, BigDecimal plata, String moneda, String concepto, String detalle) {
@@ -72,6 +72,10 @@ public class BilleteraService {
 
     public List <Movimiento> buscarMovOrdenados (int billeteraId,String moneda){
         return movRepo.FindOrderByFech(billeteraId,moneda);
+    }
+
+    public void save(Billetera billetera){
+        repo.save(billetera);
     }
 
 
