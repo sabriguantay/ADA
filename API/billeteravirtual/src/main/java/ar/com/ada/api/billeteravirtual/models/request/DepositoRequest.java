@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * DepositRequest
  */
-public class DepositRequest {
+public class DepositoRequest {
 
     public String moneda;
     public BigDecimal importeADepositar;

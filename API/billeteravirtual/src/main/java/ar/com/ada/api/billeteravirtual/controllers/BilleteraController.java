@@ -1,25 +1,13 @@
 package ar.com.ada.api.billeteravirtual.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
-
-import ar.com.ada.api.billeteravirtual.entities.Billetera;
-import ar.com.ada.api.billeteravirtual.entities.Cuenta;
-import ar.com.ada.api.billeteravirtual.entities.Movimiento;
-import ar.com.ada.api.billeteravirtual.models.request.DepositRequest;
-import ar.com.ada.api.billeteravirtual.models.request.TransferRequest;
-import ar.com.ada.api.billeteravirtual.models.response.DepositoResponse;
-import ar.com.ada.api.billeteravirtual.models.response.MovimientoResponse;
-import ar.com.ada.api.billeteravirtual.models.response.SaldoResponse;
-import ar.com.ada.api.billeteravirtual.models.response.TransferResponse;
-import ar.com.ada.api.billeteravirtual.services.BilleteraService;
+import ar.com.ada.api.billeteravirtual.entities.*;
+import ar.com.ada.api.billeteravirtual.models.request.*;
+import ar.com.ada.api.billeteravirtual.models.response.*;
+import ar.com.ada.api.billeteravirtual.services.*;
 
 /**
  * BilleteraCotroller
@@ -48,7 +36,7 @@ public class BilleteraController {
     }
 
     @PostMapping("/billeteras/{id}/depositos")
-    public DepositoResponse setBilleteraById(@PathVariable int id, @RequestBody DepositRequest req) {
+    public DepositoResponse setBilleteraById(@PathVariable int id, @RequestBody DepositoRequest req) {
 
         Billetera b = billeteraService.buscarPorId(id);
         billeteraService.agregarPlata(b, req.importeADepositar, req.moneda, req.concepto, req.detalle);

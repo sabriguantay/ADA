@@ -10,4 +10,5 @@ public class RegistrationRequest {
     public String dni;
     public String email;
     public String password;
+  
 }

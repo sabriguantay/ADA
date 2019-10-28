@@ -2,9 +2,9 @@ package ar.com.ada.api.billeteravirtual.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import ar.com.ada.api.billeteravirtual.entities.*;
 import ar.com.ada.api.billeteravirtual.excepciones.PersonaEdadException;
 import ar.com.ada.api.billeteravirtual.models.request.*;
 import ar.com.ada.api.billeteravirtual.models.response.*;
@@ -31,11 +31,11 @@ public class AuthController {
     throws PersonaEdadException {
         RegistrationResponse r = new RegistrationResponse();
 
-        int usuarioId = usuarioService.crearUsuario(req.fullName, req.dni, req.edad, req.email, req.password);
+        usuarioService.crearUsuario(req.fullName, req.dni, req.edad, req.email, req.password);
         
         r.isOk = true;
-        r.message = "Te registraste con exitoooo";
-        r.usuarioId = usuarioId;
+        r.message = "Te registraste con exito";
+       
         return r;
     }
 
@@ -53,4 +53,3 @@ public class AuthController {
     }
 }
 
-}
