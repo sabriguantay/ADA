@@ -21,4 +21,8 @@ public class Serie extends Contenido {
         return null;
     }
 
+	public Object get_id() {
+		return null;
+	}
+
 }
