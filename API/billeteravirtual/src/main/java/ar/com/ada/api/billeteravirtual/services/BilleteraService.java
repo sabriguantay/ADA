@@ -11,6 +11,7 @@ import ar.com.ada.api.billeteravirtual.entities.Cuenta;
 import ar.com.ada.api.billeteravirtual.entities.Movimiento;
 import ar.com.ada.api.billeteravirtual.repo.BilleteraRepository;
 import ar.com.ada.api.billeteravirtual.repo.MovimientoRepository;
+import ar.com.ada.api.billeteravirtual.sistema.comms.EmailService;
 
 /**
  * BilleteraService
@@ -26,6 +27,12 @@ public class BilleteraService {
 
     @Autowired
     MovimientoRepository movRepo;
+
+    @Autowired
+    EmailService emailService;
+    
+
+
 
     public Billetera buscarPorId(Integer bD) {
 
@@ -54,6 +61,9 @@ public class BilleteraService {
 
         aBilletera = usuarioService.buscarPorEmail(email).getPersona().getBilletera();
         deBilletera.transferencia(aBilletera, plata, moneda, concepto, detalle);
+
+        
+        
     }
 
     public Cuenta buscarCuentaPorMoneda(Billetera b, String moneda){

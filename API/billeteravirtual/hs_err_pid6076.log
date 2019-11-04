@@ -1,0 +1,167 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=6076, tid=0x00000000000011d0
+#
+# JRE version:  (8.0_222-b10) (build )
+# Java VM: OpenJDK 64-Bit Server VM (25.222-b10 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000027709853800):  JavaThread "Unknown thread" [_thread_in_vm, id=4560, stack(0x000000e637e00000,0x000000e637f00000)]
+
+Stack: [0x000000e637e00000,0x000000e637f00000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000027709853800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=4560, stack(0x000000e637e00000,0x000000e637f00000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000000e1200000, size: 494 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 9728K, used 174K [0x00000000f5b80000, 0x00000000f6600000, 0x0000000100000000)
+  eden space 8704K, 2% used [0x00000000f5b80000,0x00000000f5bab860,0x00000000f6400000)
+  from space 1024K, 0% used [0x00000000f6500000,0x00000000f6500000,0x00000000f6600000)
+  to   space 1024K, 0% used [0x00000000f6400000,0x00000000f6400000,0x00000000f6500000)
+ ParOldGen       total 22016K, used 0K [0x00000000e1200000, 0x00000000e2780000, 0x00000000f5b80000)
+  object space 22016K, 0% used [0x00000000e1200000,0x00000000e1200000,0x00000000e2780000)
+ Metaspace       used 789K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 74K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x000002771a5c0000,0x000002771a6c0000] byte_map_base: 0x0000027719eb7000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000727d4e90
+ Begin Bits: [0x000002771a770000, 0x000002771af28000)
+ End Bits:   [0x000002771af28000, 0x000002771b6e0000)
+
+Polling page: 0x000002770b1d0000
+
+CodeCache: size=245760Kb used=327Kb max_used=327Kb free=245432Kb
+ bounds [0x000002770b200000, 0x000002770b470000, 0x000002771a200000]
+ total_blobs=56 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.217 loading class java/lang/Short
+Event: 0.218 loading class java/lang/Short done
+Event: 0.218 loading class java/lang/Integer
+Event: 0.220 loading class java/lang/Integer done
+Event: 0.220 loading class java/lang/Long
+Event: 0.221 loading class java/lang/Long done
+Event: 0.225 loading class java/lang/NullPointerException
+Event: 0.225 loading class java/lang/NullPointerException done
+Event: 0.225 loading class java/lang/ArithmeticException
+Event: 0.226 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff6cd2c0000 - 0x00007ff6cd2fa000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\bin\java.exe
+0x00007ffaf2ee0000 - 0x00007ffaf30b2000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffaf2750000 - 0x00007ffaf27fc000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffaef490000 - 0x00007ffaef6ad000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffaf2440000 - 0x00007ffaf24e2000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffaf1e20000 - 0x00007ffaf1ebe000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffaf24f0000 - 0x00007ffaf2549000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffaf2840000 - 0x00007ffaf2961000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffaf22d0000 - 0x00007ffaf2435000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffaef820000 - 0x00007ffaef83e000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffaf2800000 - 0x00007ffaf2834000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffaf0240000 - 0x00007ffaf03c0000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffae49a0000 - 0x00007ffae4c1a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.14393.953_none_42151e83c686086b\COMCTL32.dll
+0x00007ffaf1a10000 - 0x00007ffaf1cd8000 	C:\WINDOWS\System32\combase.dll
+0x00007ffaeff20000 - 0x00007ffaf0015000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffaef6b0000 - 0x00007ffaef71a000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffaf2550000 - 0x00007ffaf257e000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffad2940000 - 0x00007ffad2a2f000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\msvcr120.dll
+0x00007ffad2060000 - 0x00007ffad2106000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\msvcp120.dll
+0x0000000072050000 - 0x000000007284e000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\server\jvm.dll
+0x00007ffaf19a0000 - 0x00007ffaf19a8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffae0bd0000 - 0x00007ffae0bd9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffae2550000 - 0x00007ffae255a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffaed890000 - 0x00007ffaed8b3000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffaf1d50000 - 0x00007ffaf1dba000 	C:\WINDOWS\System32\WS2_32.dll
+0x000002770b1a0000 - 0x000002770b1cb000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ffaf01f0000 - 0x00007ffaf0232000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007ffaecfd0000 - 0x00007ffaecfdf000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\verify.dll
+0x00007ffae64f0000 - 0x00007ffae6518000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\java.dll
+0x00007ffae6d40000 - 0x00007ffae6d75000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\jdwp.dll
+0x00007ffae81c0000 - 0x00007ffae81c8000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\npt.dll
+0x00007ffae81a0000 - 0x00007ffae81b6000 	C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,server=n,suspend=y,address=localhost:63304 -Dfile.encoding=UTF-8 
+java_command: ar.com.ada.api.billeteravirtual.DemoApplication
+java_class_path (initial): C:\Users\ADALOV~1\AppData\Local\Temp\cp_7fckbmzfixqra29tvs1k1jmm1.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\
+PATH=C:\Program Files (x86)\Intel\TXE Components\iCLS\;C:\Program Files\Intel\TXE Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Recovery\OEM\Backup\;C:\Program Files\Intel\TXE Components\DAL\;C:\Program Files (x86)\Intel\TXE Components\DAL\;C:\Program Files\Intel\TXE Components\IPT\;C:\Program Files (x86)\Intel\TXE Components\IPT\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\Ada Lovelace\AppData\Local\Programs\AdoptOpenJDK\bin;C:\Users\Ada Lovelace\AppData\Local\Microsoft\WindowsApps;C:\Users\Ada Lovelace\AppData\Local\GitHubDesktop\bin;C:\Users\Ada Lovelace\AppData\Local\Programs\Microsoft VS Code\bin
+USERNAME=Ada Lovelace
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 76 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 14393 (10.0.14393.2189)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 76 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, aes, clmul, erms, 3dnowpref, tsc, tscinvbit
+
+Memory: 4k page, physical 2019428k(51512k free), swap 5759840k(10572k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.222-b10) for windows-amd64 JRE (1.8.0_222-b10), built on Jul 17 2019 08:11:33 by "jenkins" with MS VC++ 12.0 (VS2013)
+
+time: Mon Oct 28 11:28:38 2019
+timezone: Hora estándar de Argentina
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
