@@ -22,7 +22,7 @@ public class PooflixController {
     @PostMapping("api/series")
     public NuevaSerieResponse postRegisterUser(@RequestBody Serie reqSerie) {
         NuevaSerieResponse r = new NuevaSerieResponse();
-        // aca creamos la persona y el usuario a travez del service.
+        
 
         pooflixService.grabar(reqSerie);
 

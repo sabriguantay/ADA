@@ -66,7 +66,7 @@ public class UsuarioService {
         u.setPassword(passwordEncriptada);
         repo.save(u);
 
-        emailService.SendEmail(u.getUserEmail(), "Bienvenido a tu Nefly!!!",
+        emailService.SendEmail(u.getUserEmail(), "Bienvenido a tu Pooflix!!!",
                 "Hola " + u.getFullName()
                         + "\nBienvenido a este hermoso proyecto hecho por todas las alumnas de ADA Backend 8va Mañana\n"
                         + "Ademas te regalamos 100 pesitos");
