@@ -7,37 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.mongo.pooflix.entities.*;
-import ar.com.ada.mongo.pooflix.repo.SerieRepository;
+import ar.com.ada.mongo.pooflix.repo.*;
 
 /**
  * SerieService
  */
 @Service
-public class SerieService {
+public class PeliculaService {
 
     @Autowired
-    SerieRepository repo;
+    PeliculaRepository repo;
 
-    public void grabar(Serie serie) {
-        repo.save(serie);
+    public void grabar(Pelicula pelicula) {
+        repo.save(pelicula);
     }
 
-    public Serie buscarPorId(ObjectId id) {
+    public Pelicula buscarPorId(ObjectId id) {
         return repo.findBy_id(id);
     }
 
-    public Serie buscarPorNombre(String nombre) {
+    public Pelicula buscarPorNombre(String nombre) {
         return repo.findByNombre(nombre);
     }
 
-    public List<Serie> getCatalogo() {
+    public List<Pelicula> getCatalogo() {
         return repo.findAll();
     }
-
     
-
-    
-
-
-
 }

@@ -10,6 +10,7 @@ import ar.com.ada.mongo.pooflix.entities.*;
  * UsuarioRepository
  */
 @Repository
-public interface PeliRepository extends MongoRepository<Usuario, ObjectId> {
-    
+public interface PeliculaRepository extends MongoRepository<Pelicula, ObjectId> {
+    Pelicula findBy_id(ObjectId _id);   
+    Pelicula findByNombre(String nombre);
 }

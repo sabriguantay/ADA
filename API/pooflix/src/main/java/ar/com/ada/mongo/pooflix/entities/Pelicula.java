@@ -6,5 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Pelicula extends Contenido {
 public boolean ganoOscar;
 
-    
+public Object get_id() {
+    return null;
+}
+
 }
