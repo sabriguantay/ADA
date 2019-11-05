@@ -3,6 +3,9 @@ package ar.com.ada.mongo.pooflix.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Series")
 public class Serie extends Contenido {
 
     public List<Temporada> temporadas = new ArrayList<Temporada>();

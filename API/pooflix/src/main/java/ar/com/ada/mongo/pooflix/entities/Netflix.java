@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Netflix {
 
-    public static List<Peli> CatalogoPelis = new ArrayList<Peli>();
+    public static List<Pelicula> CatalogoPelis = new ArrayList<Pelicula>();
     public static List<Serie> CatalogoSeries = new ArrayList<Serie>();
 
     
@@ -24,9 +24,9 @@ public class Netflix {
         return null;
     }
 
-    public static Peli BuscarPeli(String nombre) {
+    public static Pelicula BuscarPeli(String nombre) {
 
-        for (Peli p : Netflix.CatalogoPelis) {
+        for (Pelicula p : Netflix.CatalogoPelis) {
             if (nombre.equals(p.nombre)) {
                 return p;
             }
