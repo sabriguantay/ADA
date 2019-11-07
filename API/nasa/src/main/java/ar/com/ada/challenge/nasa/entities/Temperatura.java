@@ -1,5 +1,5 @@
 
-package ar.com.ada.challenge.nasachallenge.entities;
+package ar.com.ada.challenge.nasa.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

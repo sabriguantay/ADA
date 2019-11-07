@@ -1,4 +1,4 @@
-package ar.com.ada.challenge.nasachallenge.models.responses;
+package ar.com.ada.challenge.nasa.models.responses;
 
 /**
  * TemperaturaResponse

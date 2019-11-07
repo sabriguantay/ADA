@@ -1,4 +1,4 @@
-package ar.com.ada.challenge.nasachallenge.controllers;
+package ar.com.ada.challenge.nasa.controllers;
 
 import java.util.List;
 
@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.ada.challenge.nasachallenge.entities.Pais;
-import ar.com.ada.challenge.nasachallenge.entities.Temperatura;
-import ar.com.ada.challenge.nasachallenge.models.requests.TemperaturaCreationRequest;
-import ar.com.ada.challenge.nasachallenge.models.responses.TemperaturaDeleteResponse;
-import ar.com.ada.challenge.nasachallenge.models.responses.TemperaturaResponse;
-import ar.com.ada.challenge.nasachallenge.services.PaisService;
-import ar.com.ada.challenge.nasachallenge.services.TemperaturaService;
+import ar.com.ada.challenge.nasa.entities.Pais;
+import ar.com.ada.challenge.nasa.entities.Temperatura;
+import ar.com.ada.challenge.nasa.models.requests.*;
+import ar.com.ada.challenge.nasa.models.responses.*;
+import ar.com.ada.challenge.nasa.services.PaisService;
+import ar.com.ada.challenge.nasa.services.TemperaturaService;
 
 /**
  * TemperaturaController
@@ -30,12 +29,12 @@ public class TemperaturaController {
     PaisService paisService;
 
     @PostMapping("/temperaturas")
-    public TemperaturaResponse postCreateTemperatura(@RequestBody TemperaturaCreationRequest req) {
-        TemperaturaResponse tr = new TemperaturaResponse();
+    public TemperaturaResponse postCreateTemperatura(@RequestBody TemperaturaCrearRequest req) {
+        TemperaturaResponse r = new TemperaturaResponse();
         int temperaturaCreadaId = temperaturaService.crearTemperatura(req.codigoPais, req.anio, req.grado);
 
-        tr.temperaturaId = temperaturaCreadaId;
-        return tr;
+        r.temperaturaId = temperaturaCreadaId;
+        return r;
     }
 
     @GetMapping("/temperaturas/paises/{codigoPais}")
@@ -47,14 +46,14 @@ public class TemperaturaController {
 
 
     @DeleteMapping("/temperaturas/{id}")
-    public TemperaturaDeleteResponse deleteTemperatura(@PathVariable int id)
+    public TemperaturaEliminarResponse deleteTemperatura(@PathVariable int id)
     {
-        TemperaturaDeleteResponse tdr = new TemperaturaDeleteResponse();
+        TemperaturaEliminarResponse r = new TemperaturaEliminarResponse();
         temperaturaService.bajaTemperatura(id);
 
-        tdr.isOk = true;
-        tdr.message = "Temperature'deleted'";
-        return tdr;
+        r.isOk = true;
+        r.message = "Temperatura eliminada";
+        return r;
     }
 
     @GetMapping("/temperaturas/anios/{anio}")

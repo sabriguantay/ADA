@@ -1,9 +1,9 @@
-package ar.com.ada.challenge.nasachallenge.models.requests;
+package ar.com.ada.challenge.nasa.models.requests;
 
 /**
- * PaisCreateRequest
+ * PaisCrearRequest
  */
-public class PaisCreateRequest {
+public class PaisCrearRequest {
 
     public int codigoPais;
     public String nombre;

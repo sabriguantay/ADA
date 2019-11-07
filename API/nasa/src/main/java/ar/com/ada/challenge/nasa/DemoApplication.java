@@ -1,4 +1,4 @@
-package ar.com.ada.challenge.nasachallenge;
+package ar.com.ada.challenge.nasa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

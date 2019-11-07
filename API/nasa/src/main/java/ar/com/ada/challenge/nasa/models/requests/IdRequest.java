@@ -1,4 +1,4 @@
-package ar.com.ada.challenge.nasachallenge.models.requests;
+package ar.com.ada.challenge.nasa.models.requests;
 
 /**
  * IdRequest

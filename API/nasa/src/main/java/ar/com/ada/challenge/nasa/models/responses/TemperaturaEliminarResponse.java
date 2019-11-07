@@ -1,9 +1,9 @@
-package ar.com.ada.challenge.nasachallenge.models.responses;
+package ar.com.ada.challenge.nasa.models.responses;
 
 /**
  * TemperaturaDeleteResponse
  */
-public class TemperaturaDeleteResponse {
+public class TemperaturaEliminarResponse {
 
     public boolean isOk;
 	public String message;
