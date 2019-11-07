@@ -31,9 +31,6 @@ public class BilleteraService {
     @Autowired
     EmailService emailService;
     
-
-
-
     public Billetera buscarPorId(Integer bD) {
 
         Optional<Billetera> b =repo.findById(bD);
