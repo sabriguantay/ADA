@@ -24,7 +24,7 @@ public class Netflix {
         return null;
     }
 
-    public static Pelicula BuscarPeli(String nombre) {
+    public static Pelicula BuscarPelicula(String nombre) {
 
         for (Pelicula p : Netflix.CatalogoPelis) {
             if (nombre.equals(p.nombre)) {
