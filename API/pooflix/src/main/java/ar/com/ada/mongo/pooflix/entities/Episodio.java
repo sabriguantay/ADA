@@ -47,4 +47,9 @@ public class Episodio {
     public Episodio(){
         
     }
+
+
+	public int size() {
+		return 0;
+	}
 }
