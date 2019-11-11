@@ -1,5 +1,6 @@
 package ar.com.ada.mongo.pooflix.services;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -32,6 +33,45 @@ public class PeliculaService {
 
     public List<Pelicula> getCatalogo() {
         return repo.findAll();
+    }
+
+
+    public enum PeliculaValidationType {
+
+        PELICULA_OK,
+        PELICULA_NULA, 
+        PELICULA_VACIA, 
+        PELICULA_DUPLICADA, 
+        PELICULA_INVALIDA,
+        PELICULA_DATOS_INVALIDOS 
+        
+    }
+
+    public PeliculaValidationType verificarPelicula(Pelicula pelicula) {
+
+        if (pelicula.getNombre() == null)
+            return PeliculaValidationType.PELICULA_OK;
+
+        if (pelicula.getAnio() <= 0)
+            return PeliculaValidationType.PELICULA_DATOS_INVALIDOS;
+
+        if (pelicula.getGenero() == null)
+            return PeliculaValidationType.PELICULA_NULA;
+
+        //Armo un hashmap para ver si la temporada esta duplicada
+        HashMap<Integer, Pelicula> unicaPelicula = new HashMap<>();
+
+        for (Pelicula p : pelicula.getAnio()) {
+            if (unicaPelicula.containsKey(new Integer(p.getAnio())))
+                return PeliculaValidationType.PELICULA_DUPLICADA;
+            if (p.getAnio().size() == 0)
+                return PeliculaValidationType.PELICULA_INVALIDA;
+        
+        unicaPelicula.put(new Integer(p.getAnio()), p);
+        
+            }
+
+        return PeliculaValidationType.PELICULA_OK;
     }
     
 }

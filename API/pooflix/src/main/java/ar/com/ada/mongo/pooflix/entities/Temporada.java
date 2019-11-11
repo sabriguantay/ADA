@@ -89,6 +89,9 @@ public class Temporada {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+	public List<Serie> getEpisodio() {
+		return null;
+	}
 
 
 }

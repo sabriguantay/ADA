@@ -13,6 +13,12 @@ public class Contenido {
         
     }
 
+    public Contenido (int anio, String nombre, String genero){
+        this.anio = anio;
+        this.nombre = nombre;
+        this.genero = genero;
+    }
+
     public String getNombre() {
         return nombre;
     }

@@ -15,6 +15,14 @@ class DemoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	@Test 
+	void  verificarPelicula(){
+		PeliculaService pelicula = new PeliculaService();
+		Pelicula p = new Pelicula();
+
+
+
+	}
 
 	@Test 
 
