@@ -59,12 +59,12 @@ public class PeliculaService {
             return PeliculaValidationType.PELICULA_NULA;
 
         //Armo un hashmap para ver si la temporada esta duplicada
-        HashMap<Integer, Pelicula> unicaPelicula = new HashMap<>();
+        HashMap<String, Pelicula> unicaPelicula = new HashMap<>();
 
-        for (Pelicula p : pelicula.getAnio()) {
-            if (unicaPelicula.containsKey(new Integer(p.getAnio())))
+        for (Pelicula p : pelicula.getNombre()) {
+            if (unicaPelicula.containsKey(new String(p.getNombre()))
                 return PeliculaValidationType.PELICULA_DUPLICADA;
-            if (p.getAnio().size() == 0)
+            if (p.getNombre.size() == null)
                 return PeliculaValidationType.PELICULA_INVALIDA;
         
         unicaPelicula.put(new Integer(p.getAnio()), p);

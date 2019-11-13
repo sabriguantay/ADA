@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ar.com.ada.mongo.pooflix.entities.*;
 import ar.com.ada.mongo.pooflix.services.*;
-import ar.com.ada.mongo.pooflix.services.SerieService.SerieValidationType;
+import ar.com.ada.mongo.pooflix.services.SerieService.*;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -19,6 +19,11 @@ class DemoApplicationTests {
 	void  verificarPelicula(){
 		PeliculaService pelicula = new PeliculaService();
 		Pelicula p = new Pelicula();
+
+		
+		PeliculaValidationType validationType = service.verificarSerie(pelicula);
+		
+		assertEquals(SerieValidationType.SERIE_DATOS_INVALIDOS, validationType);
 
 
 
